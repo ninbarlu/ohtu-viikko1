@@ -66,6 +66,39 @@ public class VarastoTest {
     }
 
     @Test
+    public void lisääLiikaa() {
+        varasto.lisaaVarastoon(12);
+
+        // varastoon ei mahdu, palauttaa täyden varaston
+        assertEquals(0, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void otaLiikaa() {
+        varasto.otaVarastosta(12);
+
+        // varastossa ei tarpeeksi, palauttaa tyhjän varaston
+        assertEquals(10, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void lisääNegatiivinen() {
+        // varasto nyt tyhjä, lisätään ensin vähän saldoa
+        varasto.lisaaVarastoon(4);
+
+        // lisätään -1, palauttaa saman kuin oli
+        varasto.lisaaVarastoon(-1);
+        assertEquals(6, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void otaNegatiivinen() {
+
+        // otetaan -1, palauttaa 0.0
+        assertEquals(0.0, varasto.otaVarastosta(-1), vertailuTarkkuus);
+    }
+
+    @Test
     public void konstr() {
         varasto = new Varasto(-1);
         varasto = new Varasto(0);
