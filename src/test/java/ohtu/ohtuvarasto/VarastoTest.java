@@ -87,9 +87,8 @@ public class VarastoTest {
         varasto.lisaaVarastoon(4);
 
         // lisätään -1, palauttaa saman kuin oli
-        // RIKOTTU TESTI, pitää palauttaa 6,ei 5
         varasto.lisaaVarastoon(-1);
-        assertEquals(5, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+        assertEquals(6, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
 
     @Test
